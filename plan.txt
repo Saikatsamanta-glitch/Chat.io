@@ -1,0 +1,8 @@
+TODO:
+o create a new npm project
+o create index,css, js files
+o Install dependancies, expressm, nodemon(dev dep..)
+o Create a express server (server.js)
+o Do front end
+o install socket io, Setup socket.io in server.js and client.js
+o client send message logic in client.js 
