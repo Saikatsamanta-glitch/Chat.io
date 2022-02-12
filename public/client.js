@@ -7,6 +7,10 @@ let button=document.getElementById('button');
 do{
     name=prompt('Please enter you name: ');
 }while(!name)
+
+
+
+
 button.addEventListener("click",(e)=>{
     
     {
@@ -19,6 +23,9 @@ textarea.addEventListener("keyup",(e)=>{
         sendMessage(e.target.value);
     }
 });
+
+
+
 function sendMessage(message) {
     let msg={
         user: name,
@@ -30,8 +37,13 @@ function sendMessage(message) {
     scrollToBottom()
     // send to server
     socket.emit('message', msg)
-
 }
+// Recieve message
+socket.on('message',(msg)=>{
+    appendMessage(msg,'incoming')
+    scrollToBottom()
+})
+
 function appendMessage(msg,type) {
     let mainDiv=document.createElement('div');
     let className=type
@@ -43,11 +55,7 @@ function appendMessage(msg,type) {
     messageArea.appendChild(mainDiv)
 }
 
-// Recieve message
-socket.on('message',(msg)=>{
-    appendMessage(msg,'incoming')
-    scrollToBottom()
-})
+
 
 // scroll to bottom
 function scrollToBottom() {
